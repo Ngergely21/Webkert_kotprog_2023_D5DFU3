@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "webfelj-kotprog": {
+      "hosting": {
+        "webkert-beadando-d5dfu3": [
+          "webfeljkotprog-d5dfu3"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "webfelj-kotprog"
+  }
+}

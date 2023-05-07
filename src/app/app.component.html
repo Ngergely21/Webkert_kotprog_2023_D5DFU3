@@ -1,0 +1,36 @@
+<div>
+  <mat-toolbar color="primary">
+    <div fxShow="true" fxHide.gt-sm="true">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+
+    <a mat-button class="companyName" routerLink="/">
+      <span class="logo"><span class="material-icons" style="color: rgb(255, 255, 255);">directions_bus</span>
+      Travelsmart</span>
+    </a>
+    <span class="example-spacer"></span>
+    <div fxShow="true" fxHide.lt-md="true">
+      <a mat-button routerLink='buses'>Schedule</a>
+      <a *ngIf="!(isUserLoggedIn$|async)"mat-button routerLink='login'>Login/Regist</a>
+      <a *ngIf="(isUserLoggedIn$|async)" mat-button routerLink='profile'>Profile</a>
+      <a *ngIf="(isUserLoggedIn$|async)" mat-button (click)="logout()">Logout</a>
+    </div>
+
+  </mat-toolbar>
+  <mat-sidenav-container fxFlexFill class="example-container">
+
+    <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
+      <div fxLayout="column">
+          <a mat-button routerLink='buses'>Schedule</a>
+        <a *ngIf="!(isUserLoggedIn$|async)"mat-button routerLink='login'>Login/Regist</a>
+        <a *ngIf="(isUserLoggedIn$|async)" mat-button routerLink='profile'>Profile</a>
+        <a *ngIf="(isUserLoggedIn$|async)" mat-button (click)="logout()">Logout</a>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

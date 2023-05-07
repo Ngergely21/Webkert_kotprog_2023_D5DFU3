@@ -1,0 +1,69 @@
+<form class="form-container" [formGroup]="busAddForm">
+  <mat-card class="card-container">
+    <mat-card-header style="justify-content: center">
+      <mat-card-title>Add new bus to schedule</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="top-padding">
+        <div>
+          <mat-form-field class="full-width">
+            <mat-label>Service Number:</mat-label>
+            <input type="text" matInput placeholder="Service Number" formControlName="bid">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="top-padding">
+        <div>
+          <mat-form-field class="full-width">
+            <mat-label>Departures from:</mat-label>
+            <input type="text" matInput placeholder="Departures from:" formControlName="dep">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="top-padding">
+        <div>
+          <mat-form-field class="full-width">
+            <mat-label>Destination:</mat-label>
+            <input type="text" matInput placeholder="Destination" formControlName="dest">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="top-padding">
+        <div>
+          <mat-form-field class="full-width">
+            <mat-label>Distance:</mat-label>
+            <input type="number" matInput placeholder="Distance" formControlName="dist">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="top-padding">
+        <div>
+          <mat-form-field class="full-width">
+            <mat-label>Price:</mat-label>
+            <input type="number" matInput placeholder="Price" formControlName="price">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="top-padding">
+        <div>
+          <mat-form-field class="full-width">
+            <mat-label>Time of departure:</mat-label>
+            <input type="time" matInput placeholder="Time of departure" formControlName="tod">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="top-padding">
+        <div>
+          <mat-form-field class="full-width">
+            <mat-label>Time of arrival:</mat-label>
+            <input type="time" matInput placeholder="Time of arrival" formControlName="toa">
+          </mat-form-field>
+        </div>
+      </div>
+
+    </mat-card-content>
+    <mat-card-actions style="justify-content: center;">
+      <button mat-raised-button color="primary" [disabled]="busAddForm.invalid" (click)="addBus()">Add bus</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

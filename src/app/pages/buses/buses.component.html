@@ -1,0 +1,27 @@
+<div *ngIf="buses.length" class ="tablecontainer">
+  <table>
+    <tr>
+      <th>Service Number</th>
+      <th>Departure</th>
+      <th>Time of departure</th>
+      <th>Destination</th>
+      <th>Time of arrival</th>
+      <th>Distance (km)</th>
+      <th *ngIf="(isuseradmin$|async)||(isuserloggedin$|async)">Action</th>
+    </tr>
+    <tr *ngFor="let bus of buses; let i = index;"
+        [ngStyle]="{'background-color' : i % 2 === 0 ? '#3F51B5' : 'white','color': i%2===0 ? 'white':'black'}">
+      <td>{{bus.bid}}</td>
+      <td>{{bus.dep}}</td>
+      <td>{{bus.tod}}</td>
+      <td>{{bus.dest}}</td>
+      <td>{{bus.toa}}</td>
+      <td>{{bus.dist}}</td>
+      <td *ngIf="(isuseradmin$|async)||(isuserloggedin$|async)"><button mat-raised-button *ngIf="(isuserloggedin$|async)" (click)="purchase(bus)">Purchase</button><button *ngIf="(isuseradmin$|async)" mat-raised-button color='warn' (click)="delete(bus)">Delete</button></td>
+
+    </tr>
+  </table>
+
+
+</div>
+<button *ngIf="(isuseradmin$|async)" mat-fab class="fab" color="primary" (click)="busAdd()"><mat-icon>add</mat-icon></button>

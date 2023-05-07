@@ -1,0 +1,32 @@
+<form class="form-container">
+  <mat-card class="card-container">
+    <mat-card-header style="justify-content: center">
+      <mat-card-title>Settings</mat-card-title>
+    </mat-card-header>
+    <div *ngIf="(isuseradmin$|async)">
+      <span>You have admin permissions</span>
+    </div>
+    <div *ngIf="!(isuseradmin$|async)">
+      <span>You have no admin permission</span>
+    </div>
+    <mat-card-content>
+    </mat-card-content>
+    <mat-card-actions><button mat-raised-button (click)="save()">Change setting</button></mat-card-actions>
+  </mat-card>
+</form>
+<div *ngIf="purchases.length" class ="tablecontainer">
+  <table>
+    <tr>
+      <th>Service Number</th>
+      <th>Date</th>
+    </tr>
+    <tr *ngFor="let purchase of purchases; let i = index;"
+        [ngStyle]="{'background-color' : i % 2 === 0 ? '#3F51B5' : 'white','color': i%2===0 ? 'white':'black'}">
+      <td>{{purchase.bid}}</td>
+      <td>{{purchase.date}}</td>
+    </tr>
+  </table>
+
+
+</div>
+

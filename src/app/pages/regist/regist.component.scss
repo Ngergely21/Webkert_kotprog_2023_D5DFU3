@@ -1,0 +1,20 @@
+.full-width{
+  width: 100%;
+}
+
+.top-padding{
+  padding-top: 5vh;
+}
+
+.card-container{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  min-height: fit-content;
+}
+
+.form-container{
+  width: 60vh;
+  margin: 1vh auto;
+
+}

@@ -1,0 +1,52 @@
+
+<form class="form-container" [formGroup]="registForm">
+  <mat-card class="card-container">
+    <mat-card-header style="justify-content: center">
+      <mat-card-title>Regist</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="top-padding">
+        <div>
+          <mat-form-field class="full-width">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput placeholder="Ex. pat@example.com" formControlName="email">
+            <mat-error *ngIf="registForm.get('email')?.hasError('email') && !registForm.get('email')?.hasError('required')">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="registForm.get('email')?.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+            <mat-hint *ngIf="!registForm.get('email')?.value">Enter your email</mat-hint>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="top-padding">
+        <div>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'"  formControlName="pwd">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-hint *ngIf="!registForm.get('pwd')?.value">Enter your password</mat-hint>
+            <mat-error *ngIf="registForm.get('pwd').hasError('pattern')">
+              Password must contain at least one number, one uppercase and a
+              lowercase letter and at least 8 characters<br />Password cannot
+              contain whitespace
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="top-padding">
+        <div>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="RePassword" [type]="hide2 ? 'password' : 'text'"  formControlName="repwd">
+            <mat-icon matSuffix (click)="hide2 = !hide2">{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-hint *ngIf="!registForm.get('repwd')?.value">Confirm your password</mat-hint>
+           <mat-error *ngIf="registForm.get('repwd').errors?.['confirmedValidator']">Passwords must match</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions style="justify-content: center">
+      <button mat-raised-button color=primary [disabled]="registForm.invalid" (click)="signUp()">Sign up</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
